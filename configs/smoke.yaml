@@ -1,0 +1,71 @@
+project:
+  name: SQDeChain-smoke
+  seed: 7
+  device: cpu
+
+data:
+  root: data/sample
+  text_reviews: data/sample/text_reviews.csv
+  image_manifest: data/sample/image_manifest.csv
+  behavior_logs: data/sample/behavior_logs.csv
+  image_root: data/sample/images
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+
+text_model:
+  enabled: true
+  backend: sklearn
+  checkpoint: lightweight-smoke
+  max_length: 256
+  batch_size: 32
+  epochs: 2
+  learning_rate: 2.0e-5
+  optimizer: AdamW
+  weighted_loss: true
+
+image_model:
+  enabled: true
+  backend: tiny_cnn
+  checkpoint: tiny-cnn-smoke
+  input_size: 64
+  batch_size: 16
+  epochs: 2
+  learning_rate: 1.0e-3
+  optimizer: Adam
+
+behavior_model:
+  enabled: true
+  hidden_units: 32
+  sequence_length: 10
+  dropout: 0.20
+  batch_size: 32
+  epochs: 2
+  learning_rate: 1.0e-3
+  optimizer: RMSProp
+
+kpi:
+  sqti_alpha: 0.80
+  dirs_beta: [0.50, 0.30, 0.20]
+  tlp_gamma: [0.25, 0.20, 0.30, 0.25]
+  token_lambda: 100.0
+  token_cap: 100.0
+
+blockchain:
+  shards: [2, 4, 6, 8]
+  validators_per_shard: 7
+  committee_size: 11
+  byzantine_faults: 3
+  block_interval_ms: 5000
+  tx_batch_size: 10000
+  epoch_length_blocks: 1000
+  max_per_region: 4
+  racs_alpha: 0.50
+  racs_beta: 0.10
+  slashing_penalty_factor: 0.50
+
+statistics:
+  repeated_runs: 2
+  bootstrap_samples: 100
+  confidence: 0.95
+  bonferroni_alpha: 0.05

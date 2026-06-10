@@ -1,0 +1,71 @@
+project:
+  name: SQDeChain
+  seed: 42
+  device: auto
+
+data:
+  root: data/raw/zenodo_17369377
+  text_reviews: data/raw/zenodo_17369377/text_reviews.csv
+  image_manifest: data/raw/zenodo_17369377/image_manifest.csv
+  behavior_logs: data/raw/zenodo_17369377/behavior_logs.csv
+  image_root: data/raw/zenodo_17369377/images
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+
+text_model:
+  enabled: true
+  backend: transformers
+  checkpoint: microsoft/deberta-v3-small
+  max_length: 256
+  batch_size: 32
+  epochs: 5
+  learning_rate: 2.0e-5
+  optimizer: AdamW
+  weighted_loss: true
+
+image_model:
+  enabled: true
+  backend: timm
+  checkpoint: mobilevit_xxs
+  input_size: 224
+  batch_size: 64
+  epochs: 20
+  learning_rate: 1.0e-4
+  optimizer: Adam
+
+behavior_model:
+  enabled: true
+  hidden_units: 128
+  sequence_length: 30
+  dropout: 0.30
+  batch_size: 64
+  epochs: 20
+  learning_rate: 1.0e-3
+  optimizer: RMSProp
+
+kpi:
+  sqti_alpha: 0.80
+  dirs_beta: [0.50, 0.30, 0.20]
+  tlp_gamma: [0.25, 0.20, 0.30, 0.25]
+  token_lambda: 100.0
+  token_cap: 100.0
+
+blockchain:
+  shards: [2, 4, 6, 8]
+  validators_per_shard: 7
+  committee_size: 11
+  byzantine_faults: 3
+  block_interval_ms: 5000
+  tx_batch_size: 10000
+  epoch_length_blocks: 1000
+  max_per_region: 4
+  racs_alpha: 0.50
+  racs_beta: 0.10
+  slashing_penalty_factor: 0.50
+
+statistics:
+  repeated_runs: 5
+  bootstrap_samples: 1000
+  confidence: 0.95
+  bonferroni_alpha: 0.05
