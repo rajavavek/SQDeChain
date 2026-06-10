@@ -126,55 +126,10 @@ pip install -e ".[dev,full]"
 
 ---
 
-## Quick start: smoke test
 
-The smoke test uses the included small synthetic dataset. It is intended to verify that the repository runs correctly before using the full Zenodo dataset.
 
-```bash
-python scripts/make_synthetic_data.py --output data/sample --n-reviews 500 --n-images 80 --n-users 200
-python scripts/run_all_experiments.py --config configs/smoke.yaml --outdir results/smoke
-pytest -q
-```
 
-Expected outputs include:
-
-```text
-results/smoke/kpi_scores.csv
-results/smoke/scalability_latency.csv
-results/smoke/token_fairness.csv
-results/smoke/adversarial_tests.csv
-results/smoke/figure_scalability_latency.png
-results/smoke/figure_ablation.png
-results/smoke/figure_consensus_baselines.png
-```
-
----
-
-## Dataset
-
-The full dataset is associated with **Zenodo record 17369377**:
-
-```bash
-python scripts/download_zenodo.py --record-id 17369377 --output data/raw/zenodo_17369377
-```
-
-If Zenodo is rate-limited or manual access is required, download the files from the record page and place them in:
-
-```text
-data/raw/zenodo_17369377/
-```
-
-Then edit `configs/zenodo_17369377.yaml` so the paths match the actual downloaded filenames:
-
-```yaml
-data:
-  text_reviews: data/raw/zenodo_17369377/text_reviews.csv
-  image_manifest: data/raw/zenodo_17369377/image_manifest.csv
-  behavior_logs: data/raw/zenodo_17369377/behavior_logs.csv
-  image_root: data/raw/zenodo_17369377/images
-```
-
-The expected data schema is documented in [`docs/DATA_SCHEMA.md`](docs/DATA_SCHEMA.md).
+The data schema is documented in [`docs/DATA_SCHEMA.md`](docs/DATA_SCHEMA.md).
 
 > **Important:** Do not commit large raw data files, model checkpoints, or generated artifacts directly to GitHub. Keep the dataset on Zenodo or another external data repository, and keep only scripts, configuration files, and documentation in GitHub.
 
@@ -277,100 +232,17 @@ The pipeline writes machine-readable results and figures:
 | `scalability_latency.csv` | Shard-level throughput, latency, and finality results. |
 | `token_fairness.csv` | Token distribution and Gini fairness metrics. |
 | `adversarial_tests.csv` | Sybil, poisoning, and Byzantine attack metrics. |
-| `*.png` | Publication-style plots. |
 
 ---
 
-## Reproducibility notes
 
-- Full training results can vary with GPU type, CUDA settings, package versions, and random seeds.
-- The smoke pipeline is for functional validation only; it should not be used to claim final paper-level metrics.
-- To reproduce final paper-level tables, use the full Zenodo dataset, the full configuration, and the same hardware/software stack documented in `docs/REPRODUCIBILITY.md`.
-- Keep raw data, large checkpoints, and generated model artifacts out of GitHub. The `.gitignore` file already excludes common large-data and model-checkpoint paths.
 
----
 
-## GitHub upload checklist
 
-Before pushing the repository:
 
-```bash
-# Remove local cache files
-find . -type d -name "__pycache__" -prune -exec rm -rf {} +
-rm -rf .pytest_cache .ruff_cache .mypy_cache
 
-# Confirm large files are not staged
-git status --short
-git ls-files --others --exclude-standard | head
-```
 
-Recommended GitHub repository settings:
 
-```text
-Repository name: SQDeChain
-Owner: rajavavek
-Repository URL: https://github.com/rajavavek/SQDeChain
-Description: Reproducible implementation of SQDeChain/SQcoin, a hybrid AI–blockchain framework for verifiable Tourism 5.0 KPIs.
-Topics: smart-tourism, tourism-5-0, blockchain, bft, sharding, multimodal-ai, pytorch, transformers, mobilevit, gru, reproducibility
-Visibility: public, after checking data/licensing permissions
-License: MIT, or the license required by the institution/journal
-```
-
-Push commands:
-
-```bash
-git init
-git add .
-git commit -m "Initial release of SQDeChain reproducibility code"
-git branch -M main
-git remote add origin https://github.com/rajavavek/SQDeChain.git
-git push -u origin main
-```
-
-For large files, use Zenodo, Git LFS, or another external storage service instead of committing them directly.
-
----
-
-## Citation
-
-If this repository supports a paper, update `CITATION.cff` with the final author list, venue, DOI, and release date after publication.
-
-```bibtex
-@software{sqdechain_sqcoin,
-  title  = {SQDeChain: Enhancing Tourist Trust and Destination Image Through a Hybrid AI--Blockchain Framework for Tourism 5.0},
-  author = {rajavavek and Contributors},
-  year   = {2026},
-  url    = {https://github.com/rajavavek/SQDeChain}
-}
-```
-
-Suggested paper citation format after publication:
-
-```bibtex
-@article{sqdechain_tourism_5_0,
-  title   = {SQDeChain: Enhancing Tourist Trust and Destination Image Through a Hybrid AI--Blockchain Framework for Tourism 5.0},
-  author  = {Author Name(s)},
-  journal = {Journal / Conference Name},
-  year    = {2026},
-  doi     = {Add DOI after publication}
-}
-```
-
----
-
-## License
-
-This repository is released under the MIT License. See [`LICENSE`](LICENSE).
-
----
-
-## Contact
-
-For questions, issues, or reproducibility problems, open an issue at:
-
-```text
-https://github.com/rajavavek/SQDeChain/issues
-```
 
 Please include:
 
