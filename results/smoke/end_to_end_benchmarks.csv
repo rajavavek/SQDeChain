@@ -1,0 +1,6 @@
+metric,Hyperledger Fabric (Raft),TbDd (Simulated),SQDeChain
+Throughput (TPS),650,1200,1500
+Avg. Consensus Latency (ms),550,320,400
+Finality Time (ms),1100,600,720
+AI-KPI Integration,No,Partial,Yes
+Fault Tolerance,Crash (CFT),Byzantine (BFT),Byzantine (BFT)

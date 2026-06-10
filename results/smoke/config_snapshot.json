@@ -1,0 +1,88 @@
+{
+  "behavior_model": {
+    "batch_size": 32,
+    "dropout": 0.2,
+    "enabled": true,
+    "epochs": 2,
+    "hidden_units": 32,
+    "learning_rate": 0.001,
+    "optimizer": "RMSProp",
+    "sequence_length": 10
+  },
+  "blockchain": {
+    "block_interval_ms": 5000,
+    "byzantine_faults": 3,
+    "committee_size": 11,
+    "epoch_length_blocks": 1000,
+    "max_per_region": 4,
+    "racs_alpha": 0.5,
+    "racs_beta": 0.1,
+    "shards": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "slashing_penalty_factor": 0.5,
+    "tx_batch_size": 10000,
+    "validators_per_shard": 7
+  },
+  "data": {
+    "behavior_logs": "data/sample/behavior_logs.csv",
+    "image_manifest": "data/sample/image_manifest.csv",
+    "image_root": "data/sample/images",
+    "root": "data/sample",
+    "test_ratio": 0.15,
+    "text_reviews": "data/sample/text_reviews.csv",
+    "train_ratio": 0.7,
+    "val_ratio": 0.15
+  },
+  "image_model": {
+    "backend": "tiny_cnn",
+    "batch_size": 16,
+    "checkpoint": "tiny-cnn-smoke",
+    "enabled": true,
+    "epochs": 2,
+    "input_size": 64,
+    "learning_rate": 0.001,
+    "optimizer": "Adam"
+  },
+  "kpi": {
+    "dirs_beta": [
+      0.5,
+      0.3,
+      0.2
+    ],
+    "sqti_alpha": 0.8,
+    "tlp_gamma": [
+      0.25,
+      0.2,
+      0.3,
+      0.25
+    ],
+    "token_cap": 100.0,
+    "token_lambda": 100.0
+  },
+  "project": {
+    "device": "cpu",
+    "name": "SQDeChain-smoke",
+    "seed": 7
+  },
+  "statistics": {
+    "bonferroni_alpha": 0.05,
+    "bootstrap_samples": 100,
+    "confidence": 0.95,
+    "repeated_runs": 2
+  },
+  "text_model": {
+    "backend": "sklearn",
+    "batch_size": 32,
+    "checkpoint": "lightweight-smoke",
+    "enabled": true,
+    "epochs": 2,
+    "learning_rate": 2e-05,
+    "max_length": 256,
+    "optimizer": "AdamW",
+    "weighted_loss": true
+  }
+}

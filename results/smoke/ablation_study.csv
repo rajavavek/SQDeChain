@@ -1,0 +1,8 @@
+variant,r2,precision,recall,f1
+Full multimodal,0.91,0.92,0.91,0.91
+Without text,0.84,0.86,0.84,0.85
+Without image,0.87,0.89,0.87,0.88
+Without behaviour,0.86,0.88,0.86,0.87
+Text only,0.82,0.84,0.82,0.83
+Image only,0.78,0.8,0.78,0.79
+Behaviour only,0.8,0.82,0.8,0.81

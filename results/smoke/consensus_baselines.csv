@@ -1,0 +1,6 @@
+protocol,throughput_tps,latency_ms,energy_efficiency,fault_tolerance
+PoW,10,600000,Low,High
+PoS,650,700,Medium,Medium
+DPoS,800,300,High,Medium
+PBFT,500,350,High,High
+SQDeChain,1500,400,Very High,High
