@@ -6,9 +6,6 @@
 [![Dataset: Zenodo](https://img.shields.io/badge/Dataset-Zenodo%2017369377-blue.svg)](https://zenodo.org/records/17369377)
 [![Repository](https://img.shields.io/badge/GitHub-rajavavek%2FSQDeChain-black.svg)](https://github.com/rajavavek/SQDeChain)
 
-**Repository:** [`rajavavek/SQDeChain`](https://github.com/rajavavek/SQDeChain)  
-**Author / Maintainer:** [`@rajavavek`](https://github.com/rajavavek)  
-**Dataset:** [Zenodo record 17369377](https://zenodo.org/records/17369377)
 
 **SQDeChain (SQcoin)** is a reproducible research-code repository for a Tourism 5.0 framework that combines lightweight multimodal artificial intelligence with shard-aware Byzantine Fault Tolerant blockchain verification. The pipeline computes three tourism key performance indicators (KPIs): **Service Quality Trust Index (SQTI)**, **Destination Image Reliability Score (DIRS)**, and **Tokenised Loyalty Propensity (TLP)**. These KPI bundles are then hashed and verified using a simulated **ClusterPioneer BFT** consensus layer.
 
