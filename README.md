@@ -7,7 +7,7 @@
 [![Repository](https://img.shields.io/badge/GitHub-rajavavek%2FSQDeChain-black.svg)](https://github.com/rajavavek/SQDeChain)
 
 
-**SQDeChain (SQcoin)** is a reproducible research-code repository for a Tourism 5.0 framework that combines lightweight multimodal artificial intelligence with shard-aware Byzantine Fault Tolerant blockchain verification. The pipeline computes three tourism key performance indicators (KPIs): **Service Quality Trust Index (SQTI)**, **Destination Image Reliability Score (DIRS)**, and **Tokenised Loyalty Propensity (TLP)**. These KPI bundles are then hashed and verified using a simulated **ClusterPioneer BFT** consensus layer.
+Research code repository for a Tourism 5.0 framework that combines lightweight multimodal artificial intelligence with shard-aware Byzantine Fault Tolerant blockchain verification. The pipeline computes three tourism key performance indicators (KPIs): **Service Quality Trust Index (SQTI)**, **Destination Image Reliability Score (DIRS)**, and **Tokenised Loyalty Propensity (TLP)**. These KPI bundles are then hashed and verified using a simulated **ClusterPioneer BFT** consensus layer.
 
 > **Repository status:** This repository is a research prototype for reproducibility, benchmarking, and academic publication support. It is not a production blockchain deployment.
 
